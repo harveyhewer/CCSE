@@ -1,0 +1,33 @@
+
+services:
+  flask:
+    build: .
+    environment:
+      - FLASK_APP=app.py
+    depends_on:
+      - ecommerce-db
+    ports:
+      - "5000:5000"
+    entrypoint: ["/wait-for-it.sh", "ecommerce-db", "3306", "--", "python", "app.py"]
+  
+  ecommerce-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example_password
+      MYSQL_DATABASE: flask_db
+      MYSQL_USER: flask_user
+      MYSQL_PASSWORD: flask_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
+
+volumes:
+  mysql_data:

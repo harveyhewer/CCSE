@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Order Confirmation</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Back to Products</a>
+            <a href="{{ url_for('cart') }}">View Cart</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Thank you for your order, {{ name }}!</h2>
+        <p>We have received your order and will ship it to the following address:</p>
+        <p><strong>{{ address }}</strong></p>
+        <p>Your total order amount is: <strong>£{{ total_price }}</strong></p>
+        <p>Your cart has been cleared. You will receive an email confirmation shortly.</p>
+        <p><strong>Note: Payment is simulated in this demo and not processed. In a real-world app, we would process the payment here.</strong></p>
+    </main>
+</body>
+</html>

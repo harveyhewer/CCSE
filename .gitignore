@@ -51,3 +51,8 @@ Thumbs.db
 *.egg-info/
 dist/
 build/
+
+CW1-Copy/mysql_data/mysql.sock
+
+CW1-Copy/mysql_data/
+
